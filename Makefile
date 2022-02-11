@@ -5,7 +5,7 @@ CGO_ENABLED = 0
 OS :=$(shell awk -F= '/^ID/{print $$2}' /etc/os-release)
 
 DOCKER ?= podman
-IMG ?= quay.io/project-flotta/edgedevice:latest
+IMG ?= quay.io/machacekondra/flotta-worker:latest
 
 ifeq ($(OS),fedora)
 	LIBEXECDIR ?= /usr/local/libexec
