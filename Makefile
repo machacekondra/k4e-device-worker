@@ -125,5 +125,8 @@ rpm: ## Create rpm build
 rpm-arm64: ## Create rpm build for arm64
 	RPMBUILD_OPTS=--target=aarch64  $(MAKE) rpm-build
 
+deploy-container-image:
+	$(DOCKER) build ./tools/ -t quay.io/machacekondra/flotta-worker
+
 dist: ## Create distribution packages
 dist: build build-arm64 rpm rpm-arm64
