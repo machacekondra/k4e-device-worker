@@ -1,4 +1,5 @@
 # Hacking
+a
 
 Because this project is part of Flotta project, all contributing guidelines are
 inherit from [flotta-operator](https://github.com/project-flotta/flotta-operator) project.
