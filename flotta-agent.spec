@@ -46,6 +46,8 @@ getent passwd %{flotta_user} >/dev/null || useradd -g %{flotta_user} -s /sbin/no
 systemctl enable --now nftables.service
 loginctl enable-linger %{flotta_user}
 
+systemctl start user@$(id -u %{flotta_user}).service
+
 # HACK till https://bugzilla.redhat.com/show_bug.cgi?id=2060702 is fixed
 setenforce 0
 systemctl enable --now --machine %{flotta_user}@.host --user podman.socket
@@ -81,6 +83,8 @@ make install-worker-config USER=%{flotta_user} HOME=/home/%{flotta_user} LIBEXEC
 
 %post race
 loginctl enable-linger %{flotta_user}
+
+systemctl start user@$(id -u %{flotta_user}).service
 
 # HACK till https://bugzilla.redhat.com/show_bug.cgi?id=2060702 is fixed
 setenforce 0
